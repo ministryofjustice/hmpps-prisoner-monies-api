@@ -12,7 +12,7 @@ generic-service:
   ingress:
     enabled: true
     host: app-hostname.local # override per environment
-    tlsSecretName: hmpps-prisoner-monies-api-cert
+    tlsSecretName: hmpps-prisoner-monies-send-money-cert
 
   # Environment variables to load into the deployment
   env:
@@ -37,6 +37,10 @@ generic-service:
   namespace_secrets:
     hmpps-prisoner-monies-api-application-insights:
       APPLICATIONINSIGHTS_CONNECTION_STRING: "APPLICATIONINSIGHTS_CONNECTION_STRING"
+
+    # Email service notify auth token secret
+    hmpps-prisoner-monies-email-service-notify-auth-token:      
+      GOVUK_NOTIFY_CALLBACKS_BEARER_TOKEN: "GOVUK_NOTIFY_CALLBACKS_BEARER_TOKEN"
 
 generic-prometheus-alerts:
   targetApplication: hmpps-prisoner-monies-api
